@@ -1,0 +1,40 @@
+{
+  "instructors": [
+    {
+      "id": 1,
+      "name": "Ms. Cucumber",
+      "avatar_url": "https://source.unsplash.com/collection/6800490/500x500",
+      "birth": 1593648000000,
+      "gender": "F",
+      "services": "Crossfit",
+      "created_at": 1595191481904
+    },
+    {
+      "id": 2,
+      "name": "Mr. BananaMan",
+      "avatar_url": "http://www.banana.com",
+      "birth": 1593388800000,
+      "gender": "M",
+      "services": "Banana Peeling, Banana Eating",
+      "created_at": 1595192903360
+    },
+    {
+      "id": 3,
+      "name": "Piece of Shite Man",
+      "avatar_url": "http://www.cry.com",
+      "birth": 468115200000,
+      "gender": "M",
+      "services": "Crying, Bitching",
+      "created_at": 1595195983843
+    },
+    {
+      "id": 4,
+      "name": "Want to die man",
+      "avatar_url": "https://images.unsplash.com/photo-1534367899781-0d696bebc1d2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80",
+      "birth": 754704000000,
+      "gender": "F",
+      "services": "Programming",
+      "created_at": 1595197494800
+    }
+  ]
+}
