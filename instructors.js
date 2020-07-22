@@ -90,12 +90,12 @@ exports.edit = function(req,res){
 
     const instructor = {
         ...foundInstructor,
-        birth: date(foundInstructor)
+        birth: date(foundInstructor.birth)
     }
-    
-    return res.render('instructors/edit' , {instructor: foundInstructor})
-}
 
+    // console.log(instructor)
+    return res.render('instructors/edit' , {instructor: instructor })
+}
 //update
 
 //delete
