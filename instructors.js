@@ -21,7 +21,7 @@ exports.post = function(req,res){
         }
     }
 
-    req.body.created_at = Date.now(); // contructtor que indica a data da criação do obj
+    req.body.created_at = Date.now(); // contructor que indica a data da criação do obj
     req.body.birth = Date.parse(req.body.birth); // pega o birth e coloca no mesmo formato do created_at
     req.body.id = Number(data.instructors.length + 1); //constructor que cria um id, pega o length do instructors no data.json e adicona um
 
@@ -96,7 +96,56 @@ exports.edit = function(req,res){
     // console.log(instructor)
     return res.render('instructors/edit' , {instructor: instructor })
 }
+
 //update
 
+exports.put = function(req,res){
+
+    const { id } = req.body;
+    let index = 0;
+
+    const foundInstructor = data.instructors.find(function(instructor, foundIndex){ //foundIndex mostra o indice da repetiçao
+        if (id == instructor.id) {
+            index = foundIndex; //atualiza valor do index para o index do instrutor encontrado
+            return true;        //diz que foi encontrado o instrutor
+        }
+
+    });
+
+    if (!foundInstructor) {
+        return res.send('Instructor not found!');
+    }
+
+    const instructor = {
+        ...foundInstructor,
+        ...req.body,
+        birth: Date.parse(req.body.birth)
+    };
+
+    data.instructors[index] = instructor;   //pega o instructor atualizado e coloca no array data.instructor na posição do index
+
+    fs.writeFile("data.json", JSON.stringify(data, null, 2), function(err) {
+        if (err) return res.send('Update Error!');
+        return res.redirect(`instructors/${id}`)
+    });
+
+}
+
 //delete
+
+exports.delete = function(req,res) {
+    const { id } = req.body;
+
+    const filteredInstructors = data.instructors.filter(function(instructor){ //roda para cada instrutor, tudo que retornar true ele poe no array, tudo que retornar falso é retirado do array
+        return instructor.id != id //se o id encontrado for diferente, retorna true e mantem no array, senao, retira do array
+    });
+
+    data.instructors = filteredInstructors;
+
+    fs.writeFile('data.json', JSON.stringify(data, null, 2), function(err){
+        if (err) return res.send("File write error!");
+
+        return res.redirect('/instructors')
+    });
+}
 

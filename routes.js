@@ -1,6 +1,12 @@
 
 //faz as rotas fora do server.js
 
+//HTTP VERBS
+    //GET: Receber RESOURCE
+    //POST: Criar um novo RESOURCE com dados enviados
+    //PUT: Atualizar RESOURCE
+    //DELETE: Deletar RESOURCE
+
 const express = require('express');
 const routes = express.Router(); //faz com que a variavel fique responsavel pelas rotas
 
@@ -21,9 +27,13 @@ routes.get('/instructors/create', function(req,res){
 
 routes.post('/instructors', instructors.post ); //usa o metodo post do instructors.js
 
-routes.get('/instructors/:id', instructors.show)
+routes.get('/instructors/:id', instructors.show);
 
-routes.get('/instructors/:id/edit', instructors.edit)
+routes.get('/instructors/:id/edit', instructors.edit);
+
+routes.put('/instructors', instructors.put);
+
+routes.delete('/instructors', instructors.delete);
 
 routes.get('/members', function(req, res){
     return res.send('members');
