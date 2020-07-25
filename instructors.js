@@ -9,13 +9,9 @@ const Intl = require('intl');   //substitui o intl do node que nao estava funcio
 //index
 
 exports.index = function(req,res){
+    const instructors = data.instructors;
 
-    for (instructor of data.instructors) {
-        instructor.services = String(instructor.services);
-        instructor.services = instructor.services.split(',');
-    }
-
-    return res.render('instructors/index', {instructors: data.instructors });
+    return res.render('instructors/index', { instructors: instructors });
 };
 
 
@@ -38,7 +34,9 @@ exports.post = function(req,res){
     req.body.birth = Date.parse(req.body.birth); // pega o birth e coloca no mesmo formato do created_at
     req.body.id = Number(data.instructors.length + 1); //constructor que cria um id, pega o length do instructors no data.json e adicona um
 
-    const {avatar_url, birth, created_at, id, name, services, gender} = req.body; //desestrutura o req.body para acessar apenas as variaveis selecionadas
+    const {avatar_url, birth, created_at, id, name, gender} = req.body; //desestrutura o req.body para acessar apenas as variaveis selecionadas
+    let { services } = req.body;
+    services = services.split(','); //salva o services como array
 
     data.instructors.push({
         id,
@@ -81,7 +79,8 @@ exports.show = function(req,res){
     const instructor = {
         ...foundInstructor,         //coloca no objeto tudo que tem no found instructor
         age: age(foundInstructor.birth),                     //corrige (sobrescreve) age
-        services: foundInstructor.services.split(','),  //corrige (sobrescreve) services, quebrando na virgula e pondo em array
+        // services: foundInstructor.services.split(','),  //corrige (sobrescreve) services, quebrando na virgula e pondo em array
+                    //foi jogado para o post, para salvar como array
         created_at: new Intl.DateTimeFormat("pt-BR").format(foundInstructor.created_at)              //corrige (sobrescreve) created_at
     }
 
