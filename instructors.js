@@ -6,6 +6,19 @@ const { age, date } = require('./utils');  //desestrutura o objeto do utils e pe
 const Intl = require('intl');   //substitui o intl do node que nao estava funcionando
 
 
+//index
+
+exports.index = function(req,res){
+
+    for (instructor of data.instructors) {
+        instructor.services = String(instructor.services);
+        instructor.services = instructor.services.split(',');
+    }
+
+    return res.render('instructors/index', {instructors: data.instructors });
+};
+
+
 //create
 
 exports.post = function(req,res){
@@ -101,7 +114,7 @@ exports.edit = function(req,res){
 
 exports.put = function(req,res){
 
-    const { id } = req.body;
+    const { id } = req.body;    //pega o id enviado pelo body
     let index = 0;
 
     const foundInstructor = data.instructors.find(function(instructor, foundIndex){ //foundIndex mostra o indice da repetiçao
@@ -119,7 +132,8 @@ exports.put = function(req,res){
     const instructor = {
         ...foundInstructor,
         ...req.body,
-        birth: Date.parse(req.body.birth)
+        birth: Date.parse(req.body.birth),
+        id: Number(req.body.id)
     };
 
     data.instructors[index] = instructor;   //pega o instructor atualizado e coloca no array data.instructor na posição do index
