@@ -6,35 +6,33 @@
 
     <div class="card table-container">
 
-        <a href="/instructors/create">Novo</a>
+        <a href="/members/create">Novo</a>
 
         <table>                                         {# tabela #}
             <thead>                                     {# cabeçalho #}
                 <tr>                                    {# linha / table row #}
-                    <th>Instrutor</th>                 {# coluna #}
-                    <th>Aulas</th>
-                    <th></th>
+                    <th>Membro</th>                 {# coluna #}
+                    <th>Email</th>
+                    <th>Altura</th>
+                    <th>Peso</th>
+
 
                 </tr>       
             </thead>
             <tbody>                                     {# corpo #}
 
-                {% for instructor in instructors %}
+                {% for member in members %}
                     <tr>                                {# linha / table row #}
                         <td>
-                            <span style="background-image: url({{ instructor.avatar_url }})">
+                            <span style="background-image: url({{ member.avatar_url }})">
                             </span>
-                            {{ instructor.name }}
+                            {{ member.name }}
                         </td>                      
+                        <td>{{ member.email }}</td>
+                        <td>{{ member.height }} kg</td>
+                        <td>{{ member.weight }} cm</td>
                         <td>
-                            {% for service in instructor.services %}
-                                <span>
-                                    {{ service }}
-                                </span>
-                            {% endfor %}
-                        </td> 
-                        <td>
-                            <a href="/instructors/{{ instructor.id }}">Detalhes</a>
+                            <a href="/members/{{ member.id }}">Detalhes</a>
                         </td>
                     </tr>
                 {% endfor %}

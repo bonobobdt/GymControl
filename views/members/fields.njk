@@ -1,0 +1,133 @@
+    
+    
+    <div class="item">
+        <div>Avatar URL</div>
+        <div>
+            <input 
+                type="url"
+                name="avatar_url"
+                placeholder="http://"
+                value="{{ member.avatar_url }}"
+            >
+        </div>
+    </div>
+
+    <div class="item">
+        <div>Nome</div>
+        <div>
+            <input 
+                type="text"
+                name="name"
+                placeholder="Nome do Membro"
+                value="{{ member.name }}"
+            >
+        </div>
+    </div>
+
+    <div class="item">
+        <div>Email</div>
+        <div>
+            <input 
+                type="email"
+                name="email"
+                placeholder="seu@email.com"
+                value="{{ member.email }}"
+            >
+        </div>
+    </div>
+
+    <div class="item">
+        <div>Data de Nascimento</div>
+        <div>
+            <input 
+                type="date"
+                name="birth"
+                value="{{ member.birth }}"
+            >
+        </div>
+    </div>
+
+    <div class="item">
+        <div>Sexo</div>
+        <div>
+            <span>
+                <input 
+                    type="radio" 
+                    name="gender" 
+                    value="M"
+                    {% if member.gender == "M" %}
+                    checked
+                    {% endif %}
+                >
+                Masculino
+            </span>
+            <span>
+                <input 
+                    type="radio" 
+                    name="gender" 
+                    value="F"
+                    {% if member.gender == "F" %}
+                    checked
+                    {% endif %}
+                >
+                Feminino
+            </span>
+        </div>
+    </div>
+
+    <div class="item">
+        <div>Objetivo</div>
+        <div>
+            <select name="goal">
+                <option value="Força"
+                {% if member.goal == Força %}
+                    selected
+                {% endif %}
+                >Força</option>
+                <option value="Artes Marciais"
+                {% if member.goal == "Artes Marciais" %}
+                    selected
+                {% endif %}
+                >Artes Marciais</option>
+                <option value="Ganho de Massa"
+                {% if member.goal == "Ganho de Massa" %}
+                    selected
+                {% endif %}
+                >Ganho de Massa</option>
+                <option value= "Perda de Gordura"
+                {% if member.goal == "Perda de Gordura" %}
+                    selected
+                {% endif %}
+                >Perda de Gordura</option>
+                <option value="Melhora Cardiovascular"
+                {% if member.goal == "Melhora Cardiovascular" %}
+                    selected
+                {% endif %}
+                >Melhora Cardiovascular</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="item">
+        <div>Peso em [ kg ]</div>
+        <div>
+            <input 
+                type="number"
+                name="weight"
+                value="{{ member.weight }}"
+            >
+        </div>
+    </div>
+
+    <div class="item">
+        <div>Altura em [ cm ]</div>
+        <div>
+            <input 
+                type="number"
+                name="height"
+                value="{{ member.height }}"
+            >
+        </div>
+    </div>
+
+    <button type="submit">Salvar</button>       

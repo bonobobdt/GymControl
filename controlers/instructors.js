@@ -1,8 +1,8 @@
 
 
 const fs = require('fs'); // utiliza o fs (file system) do node.js
-const data = require('./data.json'); //json nao precisa de module.exports
-const { age, date } = require('./utils');  //desestrutura o objeto do utils e pega o age e o date
+const data = require('../data.json'); //json nao precisa de module.exports
+const { age, date } = require('../utils');  //desestrutura o objeto do utils e pega o age e o date
 const Intl = require('intl');   //substitui o intl do node que nao estava funcionando
 
 
@@ -10,12 +10,16 @@ const Intl = require('intl');   //substitui o intl do node que nao estava funcio
 
 exports.index = function(req,res){
     const instructors = data.instructors;
-
     return res.render('instructors/index', { instructors: instructors });
 };
 
-
 //create
+
+exports.create = function(req,res){
+    res.render('instructors/create')
+};
+
+//post
 
 exports.post = function(req,res){
     
@@ -102,7 +106,7 @@ exports.edit = function(req,res){
 
     const instructor = {
         ...foundInstructor,
-        birth: date(foundInstructor.birth)
+        birth: date(foundInstructor.birth).iso
     }
 
     // console.log(instructor)

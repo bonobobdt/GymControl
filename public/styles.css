@@ -154,12 +154,17 @@ header{
 /* === FORM === */
 
 
-form input {
+form input,
+select {
     width: 100%;
     outline: none;
     color: #555555;
     font-weight: bold;
     font-size: 18px;
+}
+
+select {
+    padding: 4px;
 }
 
 form input[type="radio"]{ /* seleciona os radio do input*/
@@ -243,7 +248,8 @@ tbody tr td:first-child span {
     border: 2px solid white;
 }
 
-tbody tr td:last-child a {
+tbody tr td:last-child a,
+.table-container > a {
     background-color: var(--primary-color);
     padding: 8px 16px;
     text-decoration: none;
@@ -251,6 +257,12 @@ tbody tr td:last-child a {
     color: white;
     font-size: 12px;
     border-radius: 4px;
+}
+
+.table-container > a {
+    margin-bottom: 16px;
+    margin-left: 16px;
+    display: inline-block;
 }
 
 td:last-child {
@@ -270,3 +282,5 @@ td:nth-child(2) span {
     display: inline-block; /* para pegar o margin, ja que o span tem display inline defaut*/
 
 }
+
+

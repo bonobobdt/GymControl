@@ -24,8 +24,13 @@ module.exports = {
         const month = `0${date.getUTCMonth() + 1}`.slice(-2); //mês é de 0 a 11, entao adiciona-se 1
         const day = `0${date.getUTCDate()}`.slice(-2);          //slice retorna os 2 ultimos caracteres caso o mes tenha 2 (12 = 012 / 1 = 01)
 
-        return `${year}-${month}-${day}`;
-        
+        return {
+            day,
+            month,
+            year,
+            iso: `${year}-${month}-${day}`,
+            birthDay: `${day}-${month}-${year}`
+        };
     }
 }
 
